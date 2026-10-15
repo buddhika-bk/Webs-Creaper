@@ -1,0 +1,63 @@
+@import '@fontsource-variable/instrument-sans';
+@import '@fontsource-variable/bricolage-grotesque';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas: 245 247 252;
+  --surface: 255 255 255;
+  --sunken: 237 241 249;
+  --ink: 14 26 51;
+  --muted: 87 100 130;
+  --line: 224 230 241;
+  --brand: 31 79 216;
+  --brand-deep: 11 36 120;
+  --brand-soft: 229 237 254;
+  --accent: 255 122 26;
+  --accent-soft: 255 238 224;
+  --ok: 18 140 74;
+  --warn: 176 96 6;
+  --danger: 205 36 36;
+  --shadow: 14 26 51;
+}
+.dark {
+  --canvas: 8 14 30;
+  --surface: 16 26 51;
+  --sunken: 11 19 40;
+  --ink: 233 238 250;
+  --muted: 151 164 194;
+  --line: 35 49 84;
+  --brand: 105 146 255;
+  --brand-deep: 20 44 130;
+  --brand-soft: 25 40 86;
+  --accent: 255 140 56;
+  --accent-soft: 62 38 22;
+  --ok: 74 200 130;
+  --warn: 244 168 70;
+  --danger: 255 111 111;
+  --shadow: 0 0 0;
+}
+
+@layer base {
+  html { color-scheme: light; }
+  html.dark { color-scheme: dark; }
+  body { @apply bg-canvas font-sans text-ink antialiased; font-feature-settings: 'tnum' 1; }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  ::selection { background: rgb(var(--brand) / 0.25); }
+  :focus-visible { outline: 2px solid rgb(var(--brand)); outline-offset: 2px; border-radius: 6px; }
+  input, select, textarea, button { font: inherit; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+}
+
+@layer components {
+  .field {
+    @apply w-full rounded-xl border border-line bg-surface px-3.5 py-2.5 text-sm text-ink placeholder:text-muted/70 transition-colors hover:border-muted/50 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 disabled:opacity-60;
+  }
+  .card { @apply rounded-card border border-line bg-surface; }
+  .skeleton { @apply relative overflow-hidden rounded-md bg-sunken; }
+  .skeleton::after { content: ''; @apply absolute inset-0 -translate-x-full; background: linear-gradient(90deg, transparent, rgb(var(--surface) / 0.7), transparent); animation: shimmer 1.4s infinite; }
+  .scroll-thin { scrollbar-width: thin; scrollbar-color: rgb(var(--line)) transparent; }
+}

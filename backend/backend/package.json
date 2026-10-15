@@ -1,0 +1,56 @@
+{
+  "name": "webpoint-lead-platform-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WebPoint Lead Generation Platform - API, workers and source adapters",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "dev:worker": "tsx watch src/workers/index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/server.js",
+    "start:worker": "node dist/workers/index.js",
+    "migrate": "tsx src/db/migrate.ts",
+    "seed": "tsx src/db/seed.ts",
+    "migrate:prod": "node dist/db/migrate.js",
+    "seed:prod": "node dist/db/seed.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "audit": "npm audit --omit=dev"
+  },
+  "dependencies": {
+    "argon2": "^0.41.1",
+    "bullmq": "^6.3.11",
+    "cheerio": "^1.0.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^8.0.0",
+    "ioredis": "^5.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.0",
+    "pino": "^9.4.0",
+    "pino-http": "^10.3.0",
+    "rate-limit-redis": "^4.2.0",
+    "robots-parser": "^3.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.5",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.14.0",
+    "pino-pretty": "^11.2.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.0"
+  }
+}

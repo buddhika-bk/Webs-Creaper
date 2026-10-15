@@ -1,0 +1,28 @@
+import { Router } from 'express';
+import { adminRouter, dashboardRouter } from './modules/admin/admin.routes';
+import { aiRouter } from './modules/ai/ai.routes';
+import { auditRouter } from './modules/audit/audit.routes';
+import { authRouter } from './modules/auth/auth.routes';
+import { businessesRouter } from './modules/businesses/businesses.routes';
+import { exportsRouter } from './modules/exports/exports.routes';
+import { leadListsRouter } from './modules/lead-lists/lead-lists.routes';
+import { searchJobsRouter } from './modules/search-jobs/search-jobs.routes';
+import { sourcesRouter } from './modules/sources/sources.routes';
+import { tagsRouter } from './modules/tags/tags.routes';
+import { usersRouter } from './modules/users/users.routes';
+import { workspaceRouter } from './modules/workspaces/workspace.routes';
+
+export const api = Router();
+api.use('/auth', authRouter);
+api.use('/workspace', workspaceRouter);
+api.use('/users', usersRouter);
+api.use('/dashboard', dashboardRouter);
+api.use('/admin', adminRouter);
+api.use('/search-jobs', searchJobsRouter);
+api.use('/businesses', businessesRouter);
+api.use('/exports', exportsRouter);
+api.use('/lead-lists', leadListsRouter);
+api.use('/tags', tagsRouter);
+api.use('/sources', sourcesRouter);
+api.use('/audit-logs', auditRouter);
+api.use('/ai', aiRouter);
